@@ -215,7 +215,7 @@ def make_markdown(jobs):
 # --- email ---
 def send_email_plain(subject, body_md):
     smtp_server = os.environ.get("SMTP_SERVER","smtp.gmail.com")
-    smtp_port = int(os.environ.get("SMTP_PORT", "587"))
+    smtp_port = int(os.environ.get("SMTP_PORT") or 587)
     user = os.environ.get("EMAIL_USER")
     pwd = os.environ.get("EMAIL_PASS")
     recipient = os.environ.get("RECIPIENT_EMAIL")
