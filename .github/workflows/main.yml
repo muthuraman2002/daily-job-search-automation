@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4 markdownify python-dateutil
+          pip install requests beautifulsoup4 markdownify python-dateutil dotenv
       - name: Run job search
         env:
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
