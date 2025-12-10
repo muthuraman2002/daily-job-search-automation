@@ -2,28 +2,45 @@ name: Daily Job Search and Email
 
 on:
   schedule:
-    - cron: '30 7 * * *'    # 07:30 UTC daily = 1:00 PM IST
+    - cron: '30 7 * * *'   # Runs at 07:30 UTC = 1:00 PM IST
   workflow_dispatch: {}
 
 jobs:
   run:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests beautifulsoup4 markdownify python-dateutil dotenv
-      - name: Run job search
+          pip install requests beautifulsoup4 markdownify python-dateutil python-dotenv
+
+      - name: Show environment variables
         env:
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          EMAIL_USER: ${{ secrets.EMAIL_USER }}
-          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
-          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          SMTP_SERVER: ${{ vars.SMTP_SERVER }}
+          SMTP_PORT: ${{ vars.SMTP_PORT }}
+          EMAIL_USER: ${{ vars.EMAIL_USER }}
+          EMAIL_PASS: ${{ vars.EMAIL_PASS }}
+          RECIPIENT_EMAIL: ${{ vars.RECIPIENT_EMAIL }}
+        run: |
+          echo "From GH Actions -> SERVER = $SMTP_SERVER"
+          echo "From GH Actions -> USER = $EMAIL_USER"
+          echo "From GH Actions -> PORT = $SMTP_PORT"
+
+      - name: Run job search script
+        env:
+          SMTP_SERVER: ${{ vars.SMTP_SERVER }}
+          SMTP_PORT: ${{ vars.SMTP_PORT }}
+          EMAIL_USER: ${{ vars.EMAIL_USER }}
+          EMAIL_PASS: ${{ vars.EMAIL_PASS }}
+          RECIPIENT_EMAIL: ${{ vars.RECIPIENT_EMAIL }}
         run: |
           python Jobsearch.py
