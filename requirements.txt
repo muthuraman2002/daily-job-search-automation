@@ -4,3 +4,4 @@ python-dateutil
 markdownify
 python-dotenv
 lxml
+markdown
