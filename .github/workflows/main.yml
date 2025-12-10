@@ -23,24 +23,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests beautifulsoup4 markdownify python-dateutil python-dotenv
 
-      - name: Show environment variables
+      - name: Show environment (masked)
         env:
-          SMTP_SERVER: ${{ vars.SMTP_SERVER }}
-          SMTP_PORT: ${{ vars.SMTP_PORT }}
-          EMAIL_USER: ${{ vars.EMAIL_USER }}
-          EMAIL_PASS: ${{ vars.EMAIL_PASS }}
-          RECIPIENT_EMAIL: ${{ vars.RECIPIENT_EMAIL }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
         run: |
-          echo "From GH Actions -> SERVER = $SMTP_SERVER"
-          echo "From GH Actions -> USER = $EMAIL_USER"
-          echo "From GH Actions -> PORT = $SMTP_PORT"
+          echo "SERVER = $SMTP_SERVER"
+          echo "USER = $EMAIL_USER"
+          echo "PORT = $SMTP_PORT"
+          # Password and recipient will be masked automatically
 
       - name: Run job search script
         env:
-          SMTP_SERVER: ${{ vars.SMTP_SERVER }}
-          SMTP_PORT: ${{ vars.SMTP_PORT }}
-          EMAIL_USER: ${{ vars.EMAIL_USER }}
-          EMAIL_PASS: ${{ vars.EMAIL_PASS }}
-          RECIPIENT_EMAIL: ${{ vars.RECIPIENT_EMAIL }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
         run: |
           python Jobsearch.py
