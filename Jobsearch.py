@@ -104,7 +104,7 @@ def scrape_indeed():
                 "title": title.text.strip(),
                 "company": company.text.strip() if company else "Indeed",
                 "location": location.text.strip() if location else "India",
-                "skills": "Full Stack, JavaScript, MERN",
+                "skills": "Full Stack, JavaScript, MERN Nextjs",
                 "link": url
             })
 
@@ -159,7 +159,7 @@ def scrape_instahyre():
                 "title": title.text.strip(),
                 "company": company.text.strip() if company else "Instahyre",
                 "location": "India",
-                "skills": "Full Stack, JavaScript, MERN",
+                "skills": "Full Stack, JavaScript, MERN  Nextjs",
                 "link": url
             })
 
@@ -183,7 +183,7 @@ def scrape_google():
             "title": title,
             "company": "Google",
             "location": "India / Remote",
-            "skills": "Full Stack, Cloud, React, Python",
+            "skills": "Full Stack, Cloud, React, Python Nextjs",
             "link": url
         })
     return jobs
@@ -197,7 +197,7 @@ def scrape_microsoft():
         "title": "Full Stack Developer",
         "company": "Microsoft",
         "location": "India",
-        "skills": "Azure, React, Node",
+        "skills": "Azure, React, Node Nextjs",
         "link": url
     }]
 
@@ -210,7 +210,7 @@ def scrape_amazon():
         "title": "Full Stack Developer",
         "company": "Amazon",
         "location": "India",
-        "skills": "AWS, Node.js, React",
+        "skills": "AWS, Node.js, React Nextjs",
         "link": url
     }]
 
@@ -220,7 +220,7 @@ def scrape_meta():
         "title": "Full Stack Engineer",
         "company": "Meta",
         "location": "India / Remote",
-        "skills": "React, GraphQL, Python",
+        "skills": "React, GraphQL, Python Nextjs",
         "link": "https://www.metacareers.com/jobs/"
     }]
 
@@ -230,7 +230,7 @@ def scrape_ibm():
         "title": "Full Stack Application Developer",
         "company": "IBM",
         "location": "India",
-        "skills": "Full Stack Java, React",
+        "skills": "Full Stack python, React Nextjs",
         "link": "https://www.ibm.com/careers"
     }]
 
@@ -240,7 +240,7 @@ def scrape_accenture():
         "title": "Application Full Stack Developer",
         "company": "Accenture",
         "location": "India",
-        "skills": "Full Stack, Java, React",
+        "skills": "Full Stack python, React Nextjs",
         "link": "https://www.accenture.com/in-en/careers"
     }]
 
@@ -250,7 +250,7 @@ def scrape_oracle():
         "title": "Full Stack Developer",
         "company": "Oracle",
         "location": "India",
-        "skills": "Java, Cloud, React",
+        "skills": "Full Stack python, React Nextjs",
         "link": "https://careers.oracle.com/"
     }]
 
@@ -260,7 +260,7 @@ def scrape_cisco():
         "title": "Software Engineer – Full Stack",
         "company": "Cisco",
         "location": "Bangalore / India",
-        "skills": "Full Stack, API, React",
+        "skills": "Full Stack python, React Nextjs",
         "link": "https://jobs.cisco.com/"
     }]
 
